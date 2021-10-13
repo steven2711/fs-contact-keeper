@@ -39,9 +39,9 @@ const Register = (props) => {
 
   return (
     <FormContainer>
-      <h1>Account Register</h1>
       <Form onSubmit={onSubmit}>
         {error && <Alert text={error} />}
+        <Title>Account Register</Title>
         <FormGroup>
           <Label htmlFor="name">Name</Label>
           <Input
@@ -100,10 +100,16 @@ const FormContainer = styled.div`
   }
 `;
 
+const Title = styled.h1`
+  text-align: center;
+`;
+
 const Form = styled.form`
-  width: 20%;
+  width: 30%;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   padding: 3rem;
+  background: #f3f6f4;
+  border-radius: 10px;
 
   @media (max-width: 1024px) {
     width: 40%;
@@ -139,6 +145,7 @@ const Submit = styled.input`
   border-radius: 5px;
   width: 100%;
   margin: 1rem 0;
+  background: #f6b26b;
 
   &:hover {
     transform: scale(1.02);
