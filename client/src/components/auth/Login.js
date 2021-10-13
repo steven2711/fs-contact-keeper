@@ -34,8 +34,8 @@ const Login = (props) => {
 
   return (
     <FormContainer>
-      <h1>Login</h1>
       <Form onSubmit={onSubmit}>
+        <Title>Login</Title>
         {error && <Alert text={error} />}
         <FormGroup>
           <Label htmlFor="email">Email</Label>
@@ -71,17 +71,18 @@ const FormContainer = styled.div`
   align-items: center;
   justify-content: center;
   margin-top: 4rem;
+`;
 
-  h1 {
-    margin: 1rem 0;
-  }
+const Title = styled.h1`
+  text-align: center;
 `;
 
 const Form = styled.form`
-  width: 20%;
+  width: 30%;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   padding: 3rem;
-
+  border-radius: 10px;
+  background: #f3f6f4;
   @media (max-width: 1024px) {
     width: 40%;
   }
@@ -110,7 +111,7 @@ const Input = styled.input`
 const Submit = styled.input`
   padding: 0.9rem;
   cursor: pointer;
-  background: blue;
+  background: #f6b26b;
   color: white;
   border: none;
   border-radius: 5px;
@@ -119,6 +120,7 @@ const Submit = styled.input`
 
   &:hover {
     transform: scale(1.02);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   }
 
   &:active {
