@@ -49,85 +49,148 @@ const ContactForm = () => {
 
   return (
     <Form onSubmit={onSubmit}>
-      <h2>{current ? "Edit Contact" : "Add Contact"}</h2>
-      <input
-        type="text"
-        placeholder="Name"
-        name="name"
-        value={name}
-        onChange={onChange}
+      <Title>{current ? "Edit Contact" : "Add Contact"}</Title>
+      <FormTextGroup>
+        <Input
+          type="text"
+          placeholder="Name"
+          name="name"
+          value={name}
+          required
+          onChange={onChange}
+        />
+        <Input
+          type="email"
+          placeholder="Email"
+          name="email"
+          value={email}
+          required
+          onChange={onChange}
+        />
+        <Input
+          type="text"
+          placeholder="Phone"
+          name="phone"
+          value={phone}
+          required
+          onChange={onChange}
+        />
+      </FormTextGroup>
+      <FormRadioGroup>
+        <SubTitle>Contact Type</SubTitle>
+
+        <Label htmlFor="personal">
+          <Input
+            type="radio"
+            id="personal"
+            name="type"
+            value="personal"
+            onChange={onChange}
+            checked={type === "personal"}
+          />
+          Personal
+        </Label>
+
+        <Label htmlFor="professional">
+          <Input
+            type="radio"
+            name="type"
+            id="professional"
+            value="professional"
+            onChange={onChange}
+            checked={type === "professional"}
+          />
+          Professional
+        </Label>
+      </FormRadioGroup>
+      <Submit
+        type="submit"
+        value={current ? "Update Contact" : "Add Contact"}
       />
-      <input
-        type="email"
-        placeholder="Email"
-        name="email"
-        value={email}
-        onChange={onChange}
-      />
-      <input
-        type="text"
-        placeholder="Phone"
-        name="phone"
-        value={phone}
-        onChange={onChange}
-      />
-      <h5>Contact Type</h5>
-      <input
-        type="radio"
-        name="type"
-        value="personal"
-        onChange={onChange}
-        checked={type === "personal"}
-      />
-      Personal
-      <input
-        type="radio"
-        name="type"
-        value="professional"
-        onChange={onChange}
-        checked={type === "professional"}
-      />
-      Professional
-      <input type="submit" value={current ? "Update Contact" : "Add Contact"} />
-      {current && <button onClick={clearAll}>Clear</button>}
+      {current && <Clear onClick={clearAll}>Clear</Clear>}
     </Form>
   );
 };
 
 const Form = styled.form`
-  h2 {
-    text-align: center;
+  padding: 1rem 1.5rem;
+  background: #f3f6f4;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 10px;
+`;
+
+const FormTextGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const Input = styled.input`
+  height: 2rem;
+  padding: 0 0.5rem;
+  margin: 0.6rem 0;
+
+  &[type="radio"] {
+    padding: 0;
+    margin: 0 0.5rem 0 0;
+  }
+`;
+
+const Label = styled.label`
+  display: flex;
+  align-items: center;
+`;
+
+const SubTitle = styled.h3`
+  margin: 1rem 0;
+`;
+
+const Submit = styled.input`
+  padding: 0.9rem;
+  cursor: pointer;
+  background: #f6b26b;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  text-transform: uppercase;
+
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   }
 
-  h5 {
-    margin: 0.5rem 0;
+  &:active {
+    transform: scale(1);
+  }
+`;
+
+const FormRadioGroup = styled.div`
+  margin: 1rem 0;
+`;
+
+const Clear = styled.button`
+  padding: 0.9rem;
+  cursor: pointer;
+  background: #9fb496;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  text-transform: uppercase;
+  margin: 1rem 0;
+
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   }
 
-  input[type="radio"] {
-    margin: 0 0.5rem;
+  &:active {
+    transform: scale(1);
   }
+`;
 
-  input[type="submit"] {
-    background: blue;
-    color: white;
-    width: 100%;
-    cursor: pointer;
-  }
-
-  input:not([type="radio"]) {
-    width: 100%;
-    margin: 1rem 0;
-    height: 2rem;
-  }
-
-  button {
-    display: block;
-    width: 100%;
-    height: 2rem;
-    background: red;
-    color: white;
-    cursor: pointer;
-  }
+const Title = styled.h2`
+  text-align: center;
 `;
 
 export default ContactForm;
