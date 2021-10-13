@@ -16,6 +16,8 @@ const Register = (props) => {
     password2: "",
   });
 
+  const [submitError, setSubmitError] = useState(null);
+
   useEffect(() => {
     if (isAuthenticated) {
       props.history.push("/");
@@ -30,8 +32,20 @@ const Register = (props) => {
 
   const onChange = (e) => setUser({ ...user, [e.target.name]: e.target.value });
 
+  const handlePasswordMatchError = (password, password2) => {
+    if (password.length > 0 && password !== password2) {
+      return <SubText color="red">Passwords do not match...</SubText>;
+    }
+  };
+
   const onSubmit = (e) => {
     e.preventDefault();
+
+    if (password.length >= 6 && password !== password2) {
+      setSubmitError("Please enter matching passwords");
+      setTimeout(() => setSubmitError(null), 5000);
+      return;
+    }
 
     register({ name, email, password });
 
@@ -41,7 +55,6 @@ const Register = (props) => {
   return (
     <FormContainer>
       <Form onSubmit={onSubmit}>
-        {error && <Alert text={error} />}
         <Title>Account Register</Title>
         <FormGroup>
           <Label htmlFor="name">Name</Label>
@@ -83,7 +96,13 @@ const Register = (props) => {
           />
         </FormGroup>
 
-        <Submit type="submit" value="Register" />
+        {handlePasswordMatchError(password, password2)}
+
+        <Submit type="submit">Register</Submit>
+
+        {error && <Alert text={error} />}
+        {submitError && <Alert text={submitError} />}
+
         <SubText>
           Already have an account? <Link to="/login">Login</Link>
         </SubText>
@@ -98,6 +117,10 @@ const FormContainer = styled.div`
   align-items: center;
   justify-content: center;
   margin-top: 4rem;
+
+  @media (max-width: 540px) {
+    margin: 2rem 0;
+  }
 `;
 
 const Title = styled.h1`
@@ -105,24 +128,21 @@ const Title = styled.h1`
 `;
 
 const Form = styled.form`
-  width: 30%;
+  max-width: 20rem;
+  width: 70%;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   padding: 3rem;
   background: #f3f6f4;
   border-radius: 10px;
 
-  @media (max-width: 1024px) {
-    width: 40%;
-  }
-
   @media (max-width: 540px) {
-    width: 80%;
-    padding: 1rem;
+    padding: 2rem;
   }
 `;
 
 const SubText = styled.p`
   margin-top: 1rem;
+  color: ${(props) => props.color || "black"};
 `;
 
 const FormGroup = styled.div`
@@ -140,7 +160,7 @@ const Input = styled.input`
   padding: 0 0.5rem;
 `;
 
-const Submit = styled.input`
+const Submit = styled.button`
   padding: 0.9rem;
   cursor: pointer;
   background: blue;
@@ -154,6 +174,7 @@ const Submit = styled.input`
 
   &:hover {
     transform: scale(1.02);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   }
 
   &:active {

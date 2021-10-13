@@ -37,7 +37,7 @@ const Login = (props) => {
     <FormContainer>
       <Form onSubmit={onSubmit}>
         <Title>Login</Title>
-        {error && <Alert text={error} />}
+
         <FormGroup>
           <Label htmlFor="email">Email</Label>
           <Input
@@ -60,7 +60,8 @@ const Login = (props) => {
           />
         </FormGroup>
 
-        <Submit type="submit" value="Login" />
+        <Submit type="submit">Login</Submit>
+        {error && <Alert text={error} />}
         <SubText>
           Don't have an account? <Link to="/register">Register</Link>
         </SubText>
@@ -75,6 +76,10 @@ const FormContainer = styled.div`
   align-items: center;
   justify-content: center;
   margin-top: 4rem;
+
+  @media (max-width: 540px) {
+    margin-top: 2rem;
+  }
 `;
 
 const Title = styled.h1`
@@ -82,18 +87,15 @@ const Title = styled.h1`
 `;
 
 const Form = styled.form`
-  width: 30%;
+  max-width: 20rem;
+  width: 70%;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   padding: 3rem;
   border-radius: 10px;
   background: #f3f6f4;
-  @media (max-width: 1024px) {
-    width: 40%;
-  }
 
   @media (max-width: 540px) {
-    width: 80%;
-    padding: 1rem;
+    padding: 2rem;
   }
 `;
 
@@ -116,7 +118,7 @@ const SubText = styled.p`
   margin-top: 1rem;
 `;
 
-const Submit = styled.input`
+const Submit = styled.button`
   padding: 0.9rem;
   cursor: pointer;
   background: #f6b26b;
