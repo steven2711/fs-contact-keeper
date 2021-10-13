@@ -8,7 +8,7 @@ import Navbar from "./components/layout/Navbar";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import setAuthToken from "./utils/setAuthToken";
-import PrivateRoute from "./components/routing/PrivateRoute";
+import PrivateRoute from "./routing/PrivateRoute";
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
