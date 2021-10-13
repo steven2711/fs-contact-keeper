@@ -1,6 +1,6 @@
 import React, { useReducer } from "react";
 import AuthContext from "./AuthContext";
-import authReducer from "./AuthReducer";
+import AuthReducer from "./AuthReducer";
 import axios from "axios";
 import setAuthToken from "../../utils/setAuthToken";
 
@@ -24,7 +24,7 @@ const AuthState = (props) => {
     error: null,
   };
 
-  const [state, dispatch] = useReducer(authReducer, initialState);
+  const [state, dispatch] = useReducer(AuthReducer, initialState);
 
   // Register User
   const register = async (formData) => {

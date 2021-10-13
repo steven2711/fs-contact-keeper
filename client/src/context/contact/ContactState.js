@@ -1,12 +1,11 @@
 import React, { useReducer } from "react";
 import axios from "axios";
 import ContactContext from "./ContactContext";
-import contactReducer from "./ContactReducer";
+import ContactReducer from "./ContactReducer";
 import {
   ADD_CONTACT,
   DELETE_CONTACT,
   CONTACT_ERROR,
-  SET_ALERT,
   GET_CONTACTS,
   CLEAR_CONTACTS,
   SET_CURRENT,
@@ -25,7 +24,7 @@ const ContactState = (props) => {
     loading: true,
   };
 
-  const [state, dispatch] = useReducer(contactReducer, initialState);
+  const [state, dispatch] = useReducer(ContactReducer, initialState);
 
   // Get Contacts
 

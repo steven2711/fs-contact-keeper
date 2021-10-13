@@ -9,7 +9,7 @@ import {
   CLEAR_ERRORS,
 } from "../types";
 
-export default (state, action) => {
+const AuthReducer = (state, action) => {
   switch (action.type) {
     case REGISTER_SUCCESS:
       localStorage.setItem("token", action.payload.token);
@@ -101,3 +101,5 @@ export default (state, action) => {
       return state;
   }
 };
+
+export default AuthReducer;
