@@ -13,6 +13,7 @@ const AlertMsg = styled.div`
   padding: 0.8rem;
   background: red;
   color: white;
+  border-radius: 5px;
 `;
 
 export default Alert;
