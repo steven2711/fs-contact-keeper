@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import styled from "styled-components";
 import AuthContext from "../../context/auth/AuthContext";
 import Alert from "../layout/Alert";
+import { Link } from "react-router-dom";
 
 const Login = (props) => {
   const authContext = useContext(AuthContext);
@@ -60,6 +61,9 @@ const Login = (props) => {
         </FormGroup>
 
         <Submit type="submit" value="Login" />
+        <SubText>
+          Don't have an account? <Link to="/register">Register</Link>
+        </SubText>
       </Form>
     </FormContainer>
   );
@@ -108,6 +112,10 @@ const Input = styled.input`
   padding: 0 0.5rem;
 `;
 
+const SubText = styled.p`
+  margin-top: 1rem;
+`;
+
 const Submit = styled.input`
   padding: 0.9rem;
   cursor: pointer;
@@ -117,6 +125,7 @@ const Submit = styled.input`
   border-radius: 5px;
   width: 100%;
   margin: 1rem 0;
+  text-transform: uppercase;
 
   &:hover {
     transform: scale(1.02);

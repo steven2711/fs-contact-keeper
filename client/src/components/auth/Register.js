@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import styled from "styled-components";
 import AuthContext from "../../context/auth/AuthContext";
 import Alert from "../layout/Alert";
+import { Link } from "react-router-dom";
 
 const Register = (props) => {
   const authContext = useContext(AuthContext);
@@ -83,6 +84,9 @@ const Register = (props) => {
         </FormGroup>
 
         <Submit type="submit" value="Register" />
+        <SubText>
+          Already have an account? <Link to="/login">Login</Link>
+        </SubText>
       </Form>
     </FormContainer>
   );
@@ -94,10 +98,6 @@ const FormContainer = styled.div`
   align-items: center;
   justify-content: center;
   margin-top: 4rem;
-
-  h1 {
-    margin: 1rem 0;
-  }
 `;
 
 const Title = styled.h1`
@@ -119,6 +119,10 @@ const Form = styled.form`
     width: 80%;
     padding: 1rem;
   }
+`;
+
+const SubText = styled.p`
+  margin-top: 1rem;
 `;
 
 const FormGroup = styled.div`
@@ -146,6 +150,7 @@ const Submit = styled.input`
   width: 100%;
   margin: 1rem 0;
   background: #f6b26b;
+  text-transform: uppercase;
 
   &:hover {
     transform: scale(1.02);
