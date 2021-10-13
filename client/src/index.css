@@ -10,6 +10,7 @@ ul {
 body {
   margin: 0;
   font-family: "Righteous", cursive;
+  background: #d9ead3;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
