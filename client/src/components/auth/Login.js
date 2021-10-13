@@ -26,7 +26,7 @@ const Login = (props) => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      props.history.push("/");
+      props.history.push("/dashboard");
     }
 
     setTimeout(clearErrors, 5000);
