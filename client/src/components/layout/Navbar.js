@@ -58,7 +58,7 @@ const Navbar = ({ title, icon }) => {
 const StyledNavbar = styled.nav`
   height: 4rem;
   padding: 0 3rem;
-  background: blue;
+  background: #9fb496;
   display: flex;
   align-items: center;
   justify-content: space-between;
