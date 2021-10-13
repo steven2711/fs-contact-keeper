@@ -9,7 +9,7 @@
     <a href="https://github.com/steven2711/fs-contact-keeper"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="#">View Demo</a>
+    <a href="https://fs-contact-keeper.herokuapp.com/login">View Demo</a>
   </p>
 </div>
 
